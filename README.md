@@ -24,10 +24,15 @@ This GIMP plugin allows users to remove image backgrounds using AI-powered tools
    git clone https://github.com/your-username/ai-remove-bg-gimp-plugin.git
 Install rembg in your Python 3 environment.
 
-1.  **Install `rembg`** in your Python 3 environment.
+1.  **Install `rembg`** in a Python 3 environment in your home directory.
 
      ```bash
-    pip install rembg[cli]
+    sudo apt install python3-venv
+    python3 -m venv ~/rembg
+    source ~/rembg/bin/activate
+    pip install rembg[cpu,cli]
+    deactivate
+    test: ~/rembg/bin/rembg --help
 
 2.  **Copy the Plugin to GIMP**:
 
