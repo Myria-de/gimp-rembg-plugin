@@ -122,7 +122,7 @@ The plugin now supports external configuration via `config.ini`:
 ```ini
 [Paths]
 # Windows
-# aiexe = AppData\Roaming\rembg\rembg.exe
+# aiexe = AppData\Local\Programs\Rembg\rembg.exe
 # Linux
 aiexe = ~/rembg/bin/rembg
 
