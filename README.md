@@ -24,6 +24,8 @@ Oder verwenden Sie unser Script *install_rembg_cpu.sh*.
 
 Das Script *install_rembg_gpu.sh* installiert rembg mit GPU-Beschleunigung. Das ist nicht wirklich notwendig, weil rembg auch ohne schnell genug arbeitet.
 
+**Installation unter Windows:** Verwenden Sie das Setup-Programm *rembg-cli-cpu-installer.exe*.
+
 2.  **Kopieren Sie das Plugin in die Gimp-Konfiguration**:
 
     -   Erstellen Sie das Unterverzeichnis RemoveBG` in Ihrem GIMP-Plugins-Ordner:
@@ -31,7 +33,7 @@ Das Script *install_rembg_gpu.sh* installiert rembg mit GPU-Beschleunigung. Das 
         -   **Linux mit System-Paket:** `/home/YourUserName/.config/GIMP/3.0/plug-ins/RemoveBG/`
         -   **Linux mit SNAP-Paket:** `/home/YourUserName/snap/gimp/current/.config/GIMP/3.0/plug-ins/RemoveBG/`
     -   Verschieben Sie `RemoveBG.py` und `config.ini` in dieses Unterverzeichnis.
-    -   Bearbeiten Sie die Datei `config.ini` wenn Sie einen anderen Pfad als `~/rembg/bin/rembg` verwenden.
+    -   Bearbeiten Sie die Datei `config.ini` wenn Sie einen anderen Pfad als `~/rembg/bin/rembg` verwenden. Windows-Nutzer verwenden den Pfad 
 3.  **Starten Sie GIMP neu**, um das Plugin zu laden.
 
 ## Features
