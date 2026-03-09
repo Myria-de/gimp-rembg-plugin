@@ -3,10 +3,12 @@
 #
 # Modified GIMP plugin to remove backgrounds from images
 # with an option to process all open images.
+# Reqieres a rembg installation, https://github.com/danielgatis/rembg
 # Original author: James Huang <elastic192@gmail.com>
-# Modified by: Tech Archive <medium.com/@techarchive>
-# Modified by: Guy Vardi 
-# Date: 27/7/25 
+# Modified by: Tech Archive <medium.com/@techarchive>, https://github.com/Tech-Archive/gimp-rembg-plugin
+# Modified by: Guy Vardi, https://github.com/gvardi/gimp-rembg-plugin
+# Modified by: Thorsten Eggeling
+# Date: 05/02/2026
 
 import sys
 import os
@@ -14,6 +16,7 @@ import tempfile
 import subprocess
 import configparser
 import gi
+from os.path import abspath, expanduser
 gi.require_version('Gimp', '3.0')
 gi.require_version('GimpUi', '3.0')
 gi.require_version('Gtk', '3.0')
@@ -37,7 +40,7 @@ def load_config():
     
     # Set default values
     config['Paths'] = {
-        'python_executable': 'python'
+        'aiexe': '~/rembg/bin/rembg'
     }
     config['Settings'] = {
         'default_alpha_matting_value': '15',
@@ -118,15 +121,19 @@ class RemoveBGPlugin(Gimp.PlugIn):
         )
         return export_result
 
-    def _build_rembg_command(self, sel_model, alpha_matting, ae_value, jpg_file, png_file):
+    def _build_rembg_command(self, sel_model, alpha_matting, ae_value, fg_value, bg_value, jpg_file, png_file):
         """Build the rembg command with all parameters"""
-        python_exe = self.config.get('Paths', 'python_executable', fallback='python')
-        
-        cmd = [
-            str(python_exe), '-m', 'rembg.cli', 'i', '-m', str(tupleModel[sel_model])
-        ]
+        aiexe = self.config.get('Paths', 'aiexe', fallback='~/rembg/bin/rembg')
+        # expand home dir, "~"
+        aiexe = abspath(expanduser(aiexe))
+
+        if os.path.exists ('/usr/bin/flatpak-spawn'):
+            cmd = ['flatpak-spawn', '--host', str(aiexe),'i','-m',str(tupleModel[sel_model])]
+        else:
+            cmd = [str(aiexe), 'i', '-m', str(tupleModel[sel_model])]
+
         if alpha_matting:
-            cmd.extend(['-a', '-ae', str(ae_value)])
+            cmd.extend(['-a', '-ae', str(ae_value), '-af', str(fg_value), '-ab', str(bg_value)])
         cmd.extend([str(jpg_file), str(png_file)])
         
         if self.config.getboolean('Debug', 'debug_enabled'):
@@ -137,6 +144,7 @@ class RemoveBGPlugin(Gimp.PlugIn):
 
     def _execute_rembg(self, cmd):
         """Execute the rembg command and handle errors"""
+
         try:
             process = subprocess.Popen(
                 cmd,
@@ -145,7 +153,7 @@ class RemoveBGPlugin(Gimp.PlugIn):
                 shell=False,
                 text=True
             )
-            
+
             stdout, stderr = process.communicate()
             
             if process.returncode != 0:
@@ -233,7 +241,7 @@ class RemoveBGPlugin(Gimp.PlugIn):
         except Exception:
             pass
 
-    def remove_background_from_image(self, image, as_mask, sel_model, alpha_matting, ae_value, make_square):
+    def remove_background_from_image(self, image, as_mask, sel_model, alpha_matting, ae_value, fg_value, bg_value, make_square):
         """Remove background from a single image - main orchestrator method"""
         jpg_file, png_file = self._create_temp_files()
         loaded_image = None
@@ -248,7 +256,7 @@ class RemoveBGPlugin(Gimp.PlugIn):
             self._export_layer_to_jpeg(image, jpg_file)
 
             # Build and execute rembg command
-            cmd = self._build_rembg_command(sel_model, alpha_matting, ae_value, jpg_file, png_file)
+            cmd = self._build_rembg_command(sel_model, alpha_matting, ae_value, fg_value, bg_value, jpg_file, png_file)
             success, error = self._execute_rembg(cmd)
             if not success:
                 return False, error
@@ -296,6 +304,8 @@ class RemoveBGPlugin(Gimp.PlugIn):
         sel_model = self.config.getint('Settings', 'default_model')
         alpha_matting = self.config.getboolean('Settings', 'default_alpha_matting')
         ae_value = self.config.getint('Settings', 'default_alpha_matting_value')
+        ae_fg_value = self.config.getint('Settings', 'default_fg_treshold')
+        ae_bg_value = self.config.getint('Settings', 'default_bg_treshold')
         make_square = self.config.getboolean('Settings', 'default_make_square')
 
         # --- Settings Dialog ---
@@ -343,6 +353,28 @@ class RemoveBGPlugin(Gimp.PlugIn):
             box.pack_start(ae_label, False, False, 0)
             box.pack_start(ae_scale, True, True, 0)
 
+            # Alpha Matting Foreground treshold
+            fg_label = Gtk.Label(label="Foreground threshold Size (0-255):")
+            fg_label.set_halign(Gtk.Align.START)
+            #ae_adj = Gtk.Adjustment(15, 1, 100, 1, 10, 0)
+            fg_adj = Gtk.Adjustment(value=240, lower=1, upper=255, step_increment=1, page_increment=10, page_size=0)
+            fg_scale = Gtk.Scale(orientation=Gtk.Orientation.HORIZONTAL, adjustment=fg_adj)
+            fg_scale.set_digits(0)
+            fg_scale.set_value_pos(Gtk.PositionType.RIGHT)
+            box.pack_start(fg_label, False, False, 0)
+            box.pack_start(fg_scale, True, True, 0)
+            
+            # Alpha Matting Background threshold
+            bg_label = Gtk.Label(label="Background threshold Size (0-255):")
+            bg_label.set_halign(Gtk.Align.START)
+            #ae_adj = Gtk.Adjustment(15, 1, 100, 1, 10, 0)
+            bg_adj = Gtk.Adjustment(value=10, lower=1, upper=255, step_increment=1, page_increment=10, page_size=0)
+            bg_scale = Gtk.Scale(orientation=Gtk.Orientation.HORIZONTAL, adjustment=bg_adj)
+            bg_scale.set_digits(0)
+            bg_scale.set_value_pos(Gtk.PositionType.RIGHT)
+            box.pack_start(bg_label, False, False, 0)
+            box.pack_start(bg_scale, True, True, 0)
+
             # Make Square checkbox
             square_check = Gtk.CheckButton(label="Make Square")
             square_check.set_active(False)
@@ -362,6 +394,8 @@ class RemoveBGPlugin(Gimp.PlugIn):
                 sel_model = model_combo.get_active()
                 alpha_matting = alpha_check.get_active()
                 ae_value = int(ae_scale.get_value())
+                fg_value = int(fg_scale.get_value())
+                bg_value = int(bg_scale.get_value())
                 make_square = square_check.get_active()
                 process_all_images = all_images_check.get_active()
             else:
@@ -388,7 +422,7 @@ class RemoveBGPlugin(Gimp.PlugIn):
             else:
                 image.undo_group_start()
                 success, message = self.remove_background_from_image(
-                    image, as_mask, sel_model, alpha_matting, ae_value, make_square
+                    image, as_mask, sel_model, alpha_matting, ae_value, fg_value, bg_value, make_square
                 )
                 image.undo_group_end()
                 if not success:
