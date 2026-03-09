@@ -2,7 +2,37 @@
 
 This GIMP plugin allows users to remove image backgrounds using AI-powered tools like [rembg](https://github.com/danielgatis/rembg). The plugin integrates with GIMP to offer a simple way to remove backgrounds, optionally apply the result as a mask, flatten the image, and resize the canvas to make the image square. It can process a single image or all open images in GIMP.
 
+## Deutsche Übersetzung (teilweise)
+## Installation
 
+1. **Klonen oder Download** dieses Repository.
+   ```bash
+   git clone https://github.com/Myria-de/gimp-rembg-plugin.git
+Installieren Sie rembg in Ihrer Python-Umgebung
+
+1.  **Installieren Sie `rembg`** in einer Python-3-Umgebung in Ihrem Home-Verzeichnis.
+
+     ```bash
+    sudo apt install python3-venv
+    python3 -m venv ~/rembg
+    source ~/rembg/bin/activate
+    pip install rembg[cpu,cli]
+    deactivate
+    #Test:
+    ~/rembg/bin/rembg --help
+Oder verwenden Sie unser Script *install_rembg_cpu.sh*.
+
+Das Script *install_rembg_gpu.sh* installiert rembg mit GPU-Beschleunigung. Das ist nicht wirklich notwendig, weil rembg auch ohne schnell genug arbeitet.
+
+2.  **Kopieren Sie das Plugin in die Gimp-Konfiguration**:
+
+    -   Erstellen Sie das Unterverzeichnis RemoveBG` in Ihrem GIMP-Plugins-Ordner:
+        -   **Windows:** `C:\Users\YourUserName\AppData\Roaming\GIMP\3.0\plug-ins\RemoveBG\`
+        -   **Linux mit System-Paket:** `/home/YourUserName/.config/GIMP/3.0/plug-ins/RemoveBG/`
+        -   **Linux mit SNAP-Paket:** `/home/YourUserName/snap/gimp/current/.config/GIMP/3.0/plug-ins/RemoveBG/`
+    -   Verschieben Sie `RemoveBG.py` und `config.ini` in dieses Unterverzeichnis.
+    -   Bearbeiten Sie die Datei `config.ini` wenn Sie einen anderen Pfad als `~/rembg/bin/rembg` verwenden.
+3.  **Starten Sie GIMP neu**, um das Plugin zu laden.
 
 ## Features
 
@@ -45,9 +75,9 @@ The script *install_rembg_gpu.sh* installs rembg with GPU support. That's not re
     -   Create a subdirectory called `RemoveBG` in your GIMP plugins folder:
         -   **Windows:** `C:\Users\YourUserName\AppData\Roaming\GIMP\3.0\plug-ins\RemoveBG\`
         -   **Linux with system package:** `/home/YourUserName/.config/GIMP/3.0/plug-ins/RemoveBG/`
-        -   **Linux with SNAP package:** `/home/YourUserName/snap/gimp/current/.config/GIMP/3.0/plug-ins`
+        -   **Linux with SNAP package:** `/home/YourUserName/snap/gimp/current/.config/GIMP/3.0/plug-ins/RemoveBG/`
     -   Move both `RemoveBG.py` and `config.ini` files to this subdirectory
-    -   Edit `config.ini` to match your Python installation if needed
+    -   Edit `config.ini` to match your rembg installation if needed
 3.  **Restart GIMP** to load the plugin.
 
 Usage
@@ -73,7 +103,7 @@ Plugin Options
 | **Alpha Matting** | Refine the edges of the background removal using alpha matting. |
 | **Alpha Matting Erode Size** | Set the size for edge refinement when using alpha matting. |
 | **Make Square** | Resize the canvas to make the image square by adjusting the shortest side. |
-| **Process all Open Images** | Apply the plugin to all open images in GIMP. Currently disabled due to stability issues.|
+| **~~Process all Open Images~~** | ~~Apply the plugin to all open images in GIMP. Currently disabled due to stability issues.~~|
 
 ## Configuration
 
