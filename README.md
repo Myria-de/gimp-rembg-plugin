@@ -3,6 +3,8 @@
 This GIMP plugin allows users to remove image backgrounds using AI-powered tools like [rembg](https://github.com/danielgatis/rembg). The plugin integrates with GIMP to offer a simple way to remove backgrounds, optionally apply the result as a mask, flatten the image, and resize the canvas to make the image square. It can process a single image or all open images in GIMP.
 
 ## Deutsche Übersetzung (teilweise)
+Dieses GIMP-Plugin ermöglicht es Benutzern, Bildhintergründe mit KI-gestützten Tools wie [rembg](https://github.com/danielgatis/rembg) zu entfernen. Das Plugin lässt sich in GIMP integrieren und bietet eine einfache Möglichkeit, Hintergründe zu entfernen, das Ergebnis optional als Maske anzuwenden, das Bild zu glätten und die Leinwandgröße anzupassen, um das Bild quadratisch zu machen. Es kann ein einzelnes Bild ~~oder alle in GIMP geöffneten Bilder~~ verarbeiten.
+
 ## Installation
 
 1. **Klonen oder Download** dieses Repository.
