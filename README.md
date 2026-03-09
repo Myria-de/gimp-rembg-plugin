@@ -35,7 +35,7 @@ Das Script *install_rembg_gpu.sh* installiert rembg mit GPU-Beschleunigung. Das 
         -   **Linux mit System-Paket:** `/home/YourUserName/.config/GIMP/3.0/plug-ins/RemoveBG/`
         -   **Linux mit SNAP-Paket:** `/home/YourUserName/snap/gimp/current/.config/GIMP/3.0/plug-ins/RemoveBG/`
     -   Verschieben Sie `RemoveBG.py` und `config.ini` in dieses Unterverzeichnis.
-    -   Bearbeiten Sie die Datei `config.ini` wenn Sie einen anderen Pfad als `~/rembg/bin/rembg` verwenden. Windows-Nutzer verwenden den Pfad `AppData\Local\rembg\rembg.exe`, den das Setup-Programm vorgibt.
+    -   Bearbeiten Sie die Datei `config.ini` wenn Sie einen anderen Pfad als `~/rembg/bin/rembg` verwenden. Windows-Nutzer verwenden den Pfad `AppData\Local\rembg\rembg.exe` (relativer Pfad unter `C:\Users\[Benutzername]`), den das Setup-Programm vorgibt. Das Home-Verzeichnis wird vom Python-Script ergänzt.
 3.  **Starten Sie GIMP neu**, um das Plugin zu laden.
 
 **Weitere Möglichkeiten:** Sie können rembg auch unabhängig von GIMP verwenden. Anleitungen finden Sie auf [rembg](https://github.com/danielgatis/rembg).
@@ -85,7 +85,7 @@ The script *install_rembg_gpu.sh* installs rembg with GPU support. That's not re
         -   **Linux with system package:** `/home/YourUserName/.config/GIMP/3.0/plug-ins/RemoveBG/`
         -   **Linux with SNAP package:** `/home/YourUserName/snap/gimp/current/.config/GIMP/3.0/plug-ins/RemoveBG/`
     -   Move both `RemoveBG.py` and `config.ini` files to this subdirectory
-    -   Edit `config.ini` to match your rembg installation if needed. Windows users use the Path `AppData\Local\rembg\rembg.exe`, which is the default setup location.
+    -   Edit the `config.ini` file if you are using a path other than `~/rembg/bin/rembg`. Windows users should use the path `AppData\Local\rembg\rembg.exe` (relative path under `C:\Users\[username]`), which is specified by the setup programme. The home directory is added by the Python script.
 3.  **Restart GIMP** to load the plugin.
 
 **Other options:** You can also use rembg independently of GIMP. Instructions can be found at [rembg](https://github.com/danielgatis/rembg).
