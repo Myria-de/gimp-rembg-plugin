@@ -2,6 +2,8 @@
 
 This GIMP plugin allows users to remove image backgrounds using AI-powered tools like [rembg](https://github.com/danielgatis/rembg). The plugin integrates with GIMP to offer a simple way to remove backgrounds, optionally apply the result as a mask, flatten the image, and resize the canvas to make the image square. It can process a single image or all open images in GIMP.
 
+
+
 ## Features
 
 - **AI-Powered Background Removal:** Removes the background using the `rembg` tool, an AI-powered background removal library.
@@ -32,13 +34,18 @@ Install rembg in your Python 3 environment.
     source ~/rembg/bin/activate
     pip install rembg[cpu,cli]
     deactivate
-    test: ~/rembg/bin/rembg --help
+    #Test:
+    ~/rembg/bin/rembg --help
+Or use our Script *install_rembg_cpu.sh*.
+
+The script *install_rembg_gpu.sh* installs rembg with GPU support. That's not really necessary because rembg works fast enough anyway.
 
 2.  **Copy the Plugin to GIMP**:
 
     -   Create a subdirectory called `RemoveBG` in your GIMP plugins folder:
         -   **Windows:** `C:\Users\YourUserName\AppData\Roaming\GIMP\3.0\plug-ins\RemoveBG\`
-        -   **Linux:** `/home/YourUserName/.config/GIMP/3.0/plug-ins/RemoveBG/`
+        -   **Linux with system package:** `/home/YourUserName/.config/GIMP/3.0/plug-ins/RemoveBG/`
+        -   **Linux with SNAP package:** `/home/YourUserName/snap/gimp/current/.config/GIMP/3.0/plug-ins`
     -   Move both `RemoveBG.py` and `config.ini` files to this subdirectory
     -   Edit `config.ini` to match your Python installation if needed
 3.  **Restart GIMP** to load the plugin.
@@ -53,7 +60,7 @@ Usage
     -   **Model:** Choose which AI model to use for background removal.
     -   **Alpha Matting:** Enable alpha matting for smoother edges.
     -   **Make Square:** Optionally make the canvas square.
-    -   **Process all Open Images:** Process all open images in GIMP in batch mode.
+    -   **Process all Open Images:** Process all open images in GIMP in batch mode. **Currently disabled due to stability issues.**
 4.  Click **OK** to run the plugin.
 
 Plugin Options
@@ -66,7 +73,7 @@ Plugin Options
 | **Alpha Matting** | Refine the edges of the background removal using alpha matting. |
 | **Alpha Matting Erode Size** | Set the size for edge refinement when using alpha matting. |
 | **Make Square** | Resize the canvas to make the image square by adjusting the shortest side. |
-| **Process all Open Images** | Apply the plugin to all open images in GIMP. |
+| **Process all Open Images** | Apply the plugin to all open images in GIMP. Currently disabled due to stability issues.|
 
 ## Configuration
 
@@ -74,10 +81,15 @@ The plugin now supports external configuration via `config.ini`:
 
 ```ini
 [Paths]
-python_executable = python
+# Windows
+# aiexe = AppData\Roaming\rembg\rembg.exe
+# Linux
+aiexe = ~/rembg/bin/rembg
 
 [Settings]
 default_alpha_matting_value = 15
+default_fg_treshold = 240
+default_bg_treshold = 10
 default_model = 0
 default_as_mask = False
 default_alpha_matting = False
