@@ -10,7 +10,7 @@ This GIMP plugin allows users to remove image backgrounds using AI-powered tools
 - **Mask Option:** Choose to apply the background removal as a non-destructive layer mask.
 - **Make Square Option:** Optionally resize the canvas to make the image square by extending the shorter side to match the longest side.
 - **Flatten Image:** Automatically flatten the image after processing, merging visible layers and removing any non-visible ones.
-- **Batch Process:** Process all open images in GIMP with a single click.
+- ~~**Batch Process:** Process all open images in GIMP with a single click.~~
 - **External Configuration:** Customize settings via `config.ini` file.
 
 ## Requirements
@@ -60,7 +60,7 @@ Usage
     -   **Model:** Choose which AI model to use for background removal.
     -   **Alpha Matting:** Enable alpha matting for smoother edges.
     -   **Make Square:** Optionally make the canvas square.
-    -   **Process all Open Images:** Process all open images in GIMP in batch mode. **Currently disabled due to stability issues.**
+    -   ~~**Process all Open Images:** Process all open images in GIMP in batch mode. **Currently disabled due to stability issues.**~~
 4.  Click **OK** to run the plugin.
 
 Plugin Options
@@ -112,10 +112,13 @@ debug_enabled = False
 
 - **GIMP 3.0 Support:** Fully upgraded from GIMP 2.x to GIMP 3.0 compatibility
 - **External Configuration:** Settings moved to `config.ini` for better portability
-- **Modern rembg Integration:** Updated to use `rembg.cli` instead of direct executable
+- ~~**Modern rembg Integration:** Updated to use `rembg.cli` instead of direct executable~~
+- **rembg Integration** Moved back to cli usage because of better compatibility
 - **Improved Code Structure:** Refactored into smaller, focused methods
 - **Enhanced Error Handling:** Better debugging and error reporting
-- **Fixed Batch Processing:** Proper handling of multiple images
+- **SNAP/Flatpack support**
+- **Enhanced Configuration** Added configuration for Alpha Matting Foreground treshold and Alpha Matting Background threshold
+- ~~**Fixed Batch Processing:** Proper handling of multiple images~~
 
 ## Contributing
 ------------
@@ -129,6 +132,6 @@ This project is licensed under the **GPLv3** License - see the <LICENSE> file fo
 
 Acknowledgments
 ---------------
-
+-   **Original/Updated gimp-rembg-plugin**: https://github.com/gvardi/gimp-rembg-plugin
 -   **rembg**: This plugin integrates with [rembg](https://github.com/danielgatis/rembg) to handle AI-powered background removal.
 -   **GIMP**: The GNU Image Manipulation Program, a free and open-source image editor.
