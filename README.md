@@ -81,7 +81,7 @@ The script *install_rembg_gpu.sh* installs rembg with GPU support. That's not re
         -   **Linux with system package:** `/home/YourUserName/.config/GIMP/3.0/plug-ins/RemoveBG/`
         -   **Linux with SNAP package:** `/home/YourUserName/snap/gimp/current/.config/GIMP/3.0/plug-ins/RemoveBG/`
     -   Move both `RemoveBG.py` and `config.ini` files to this subdirectory
-    -   Edit `config.ini` to match your rembg installation if needed. Windows user use the Path `AppData\Local\Programs\Rembg`, which is the default setup location.
+    -   Edit `config.ini` to match your rembg installation if needed. Windows users use the Path `AppData\Local\Programs\Rembg`, which is the default setup location.
 3.  **Restart GIMP** to load the plugin.
 
 Usage
