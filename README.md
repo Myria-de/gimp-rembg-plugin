@@ -26,7 +26,7 @@ Oder verwenden Sie unser Script *install_rembg_cpu.sh*.
 
 Das Script *install_rembg_gpu.sh* installiert rembg mit GPU-Beschleunigung. Das ist nicht wirklich notwendig, weil rembg auch ohne schnell genug arbeitet.
 
-**Installation unter Windows:** Verwenden Sie das Setup-Programm *rembg-cli-cpu-installer.exe*.
+**Installation unter Windows:** Verwenden Sie das Setup-Programm *rembg-cli-cpu-installer.exe* unter "Releases".
 
 2.  **Kopieren Sie das Plugin in die Gimp-Konfiguration**:
 
@@ -76,7 +76,7 @@ Or use our Script *install_rembg_cpu.sh*.
 
 The script *install_rembg_gpu.sh* installs rembg with GPU support. That's not really necessary because rembg works fast enough anyway.
 
-**Windows installation:** Use the setup tool *rembg-cli-cpu-installer.exe*.
+**Windows installation:** Use the setup tool *rembg-cli-cpu-installer.exe* ("Releases").
 
 2.  **Copy the Plugin to GIMP**:
 
