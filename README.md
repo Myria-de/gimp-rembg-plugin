@@ -38,6 +38,8 @@ Das Script *install_rembg_gpu.sh* installiert rembg mit GPU-Beschleunigung. Das 
     -   Bearbeiten Sie die Datei `config.ini` wenn Sie einen anderen Pfad als `~/rembg/bin/rembg` verwenden. Windows-Nutzer verwenden den Pfad `AppData\Local\Programs\Rembg`, den das Setup-Programm vorgibt.
 3.  **Starten Sie GIMP neu**, um das Plugin zu laden.
 
+**Weitere Möglichkeiten:** Sie können rembg auch unabhängig von GIMP verwenden. Anleitungen finden Sie auf [rembg](https://github.com/danielgatis/rembg).
+
 ## Features
 
 - **AI-Powered Background Removal:** Removes the background using the `rembg` tool, an AI-powered background removal library.
@@ -85,6 +87,8 @@ The script *install_rembg_gpu.sh* installs rembg with GPU support. That's not re
     -   Move both `RemoveBG.py` and `config.ini` files to this subdirectory
     -   Edit `config.ini` to match your rembg installation if needed. Windows users use the Path `AppData\Local\Programs\Rembg`, which is the default setup location.
 3.  **Restart GIMP** to load the plugin.
+
+**Other options:** You can also use rembg independently of GIMP. Instructions can be found at [rembg](https://github.com/danielgatis/rembg).
 
 Usage
 -----
