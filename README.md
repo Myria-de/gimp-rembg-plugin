@@ -35,7 +35,7 @@ deactivate
   - Laden Sie [RemoveBG.zip](https://github.com/Myria-de/gimp-rembg-plugin/releases/download/v1.0/RemoveBG.zip) herunter.
   - Entpacken Sie den enthaltenen Ordner RemoveBG in das Plugin-Verzeichnis von Gimp
   - **Windows:** `C:\Users\YourUserName\AppData\Roaming\GIMP\3.0\plug-ins\RemoveBG\`
-  - **Linux mit System-Paket:** `/home/YourUserName/.config/GIMP/3.0/plug-ins/RemoveBG/`
+  - **Linux mit System-Paket/Appimage/Flatpak:** `/home/YourUserName/.config/GIMP/3.0/plug-ins/RemoveBG/`
   - **Linux mit SNAP-Paket:** `/home/YourUserName/snap/gimp/current/.config/GIMP/3.0/plug-ins/RemoveBG/`
 
 **ODER**  
@@ -99,7 +99,7 @@ deactivate
 
 - Extract the content of [RemoveBG.zip](https://github.com/Myria-de/gimp-rembg-plugin/releases/download/v1.0/RemoveBG.zip) to the Gimp plugin folder
 - **Windows:** `C:\Users\YourUserName\AppData\Roaming\GIMP\3.0\plug-ins\RemoveBG\`
-- **Linux with system package:** `/home/YourUserName/.config/GIMP/3.0/plug-ins/RemoveBG/`
+- **Linux with system package/Appimage/Flatpak:** `/home/YourUserName/.config/GIMP/3.0/plug-ins/RemoveBG/`
 - **Linux with SNAP package:** `/home/YourUserName/snap/gimp/current/.config/GIMP/3.0/plug-ins/RemoveBG/`
 
 **OR**
