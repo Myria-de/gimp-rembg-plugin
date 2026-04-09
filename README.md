@@ -71,24 +71,27 @@ deactivate
 
 ## Installation
 
-1. **Clone or Download** this repository.
-   ```bash
-   git clone https://github.com/Myria-de/gimp-rembg-plugin.git
-Install rembg in your Python 3 environment.
-
-1.  **Install `rembg`** in a Python 3 environment in your home directory.
-
-     ```bash
-    sudo apt install python3-venv
-    python3 -m venv ~/rembg
-    source ~/rembg/bin/activate
-    pip install rembg[cpu,cli]
-    deactivate
-    #Test:
-    ~/rembg/bin/rembg --help
-Or use our Script *install_rembg_cpu.sh*.
+1a. **Clone or Download** this repository.
+```bash
+git clone https://github.com/Myria-de/gimp-rembg-plugin.git
+```
+Use our Script *install_rembg_cpu.sh* to install rembg.
 
 The script *install_rembg_gpu.sh* installs rembg with GPU support. That's not really necessary because rembg works fast enough anyway.
+
+**OR**
+
+1b.  **Install `rembg`** in a Python 3 environment in your home directory.
+
+```bash
+sudo apt install python3-venv
+python3 -m venv ~/rembg
+source ~/rembg/bin/activate
+pip install rembg[cpu,cli]
+deactivate
+#Test:
+~/rembg/bin/rembg --help
+```
 
 **Windows installation:** Use the setup tool *rembg-cli-cpu-installer.exe* ("Releases").
 
