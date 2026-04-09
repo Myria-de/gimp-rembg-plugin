@@ -12,7 +12,7 @@ Dieses GIMP-Plugin ermöglicht es Benutzern, Bildhintergründe mit KI-gestützte
 git clone https://github.com/Myria-de/gimp-rembg-plugin.git
 ```
 Verwenden Sie dann unser Script *install_rembg_cpu.sh*.
-Das Script *install_rembg_gpu.sh* installiert rembg mit GPU-Beschleunigung. Das ist nicht wirklich notwendig, weil rembg auch ohne schnell genug arbeitet.
+Das Script *install_rembg_gpu.sh* installiert rembg mit GPU-Beschleunigung (wenn verfügbar). Das ist nicht wirklich notwendig, weil rembg auch ohne schnell genug arbeitet.
 
 **ODER**
 
