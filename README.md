@@ -33,7 +33,7 @@ deactivate
 
 - Über das ZIP-Archiv installieren:
   - Laden Sie [RemoveBG.zip](https://github.com/Myria-de/gimp-rembg-plugin/releases/download/v1.0/RemoveBG.zip) herunter.
-  - Entpacken Sie den enthaltenen Ordner RemoveBG in dsa Plugin-Verzeichnis von Gimp
+  - Entpacken Sie den enthaltenen Ordner RemoveBG in das Plugin-Verzeichnis von Gimp
   - **Windows:** `C:\Users\YourUserName\AppData\Roaming\GIMP\3.0\plug-ins\RemoveBG\`
   - **Linux mit System-Paket:** `/home/YourUserName/.config/GIMP/3.0/plug-ins/RemoveBG/`
   - **Linux mit SNAP-Paket:** `/home/YourUserName/snap/gimp/current/.config/GIMP/3.0/plug-ins/RemoveBG/`
