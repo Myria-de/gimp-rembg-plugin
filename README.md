@@ -7,13 +7,16 @@ Dieses GIMP-Plugin ermöglicht es Benutzern, Bildhintergründe mit KI-gestützte
 
 ## Installation
 
-1. **Das Rembg-KI-Tool installieren:** Klonen oder Download dieses Repository.
+1a. **Das Rembg-KI-Tool installieren:** Klonen oder Download dieses Repository.
    ```bash
    git clone https://github.com/Myria-de/gimp-rembg-plugin.git
+   ```
+Verwenden Sie dann unser Script *install_rembg_cpu.sh*.
+Das Script *install_rembg_gpu.sh* installiert rembg mit GPU-Beschleunigung. Das ist nicht wirklich notwendig, weil rembg auch ohne schnell genug arbeitet.
 
+**ODER**
 
-
-1.  **Installieren Sie `rembg`** in einer Python-3-Umgebung in Ihrem Home-Verzeichnis.
+1b.  **Installieren Sie `rembg`** selbst in einer Python-3-Umgebung in Ihrem Home-Verzeichnis.
 
      ```bash
     sudo apt install python3-venv
@@ -23,11 +26,8 @@ Dieses GIMP-Plugin ermöglicht es Benutzern, Bildhintergründe mit KI-gestützte
     deactivate
     #Test:
     ~/rembg/bin/rembg --help
-Oder verwenden Sie unser Script *install_rembg_cpu.sh*.
 
-Das Script *install_rembg_gpu.sh* installiert rembg mit GPU-Beschleunigung. Das ist nicht wirklich notwendig, weil rembg auch ohne schnell genug arbeitet.
-
-**Installation unter Windows:** Verwenden Sie das Setup-Programm *rembg-cli-cpu-installer.exe* unter "Releases".
+**Installation unter Windows:** Verwenden Sie das Setup-Programm [rembg-cli-cpu-installer.exe](https://github.com/Myria-de/gimp-rembg-plugin/releases/download/v1.0/rembg-cli-cpu-installer.exe) unter "Releases".
 
 2.  **Kopieren Sie das Plugin in die Gimp-Konfiguration**:
 
@@ -37,14 +37,16 @@ Das Script *install_rembg_gpu.sh* installiert rembg mit GPU-Beschleunigung. Das 
         - **Windows:** `C:\Users\YourUserName\AppData\Roaming\GIMP\3.0\plug-ins\RemoveBG\`
         - **Linux mit System-Paket:** `/home/YourUserName/.config/GIMP/3.0/plug-ins/RemoveBG/`
         - **Linux mit SNAP-Paket:** `/home/YourUserName/snap/gimp/current/.config/GIMP/3.0/plug-ins/RemoveBG/`
-**ODER**     
- 
+     
+**ODER**      
+
     - Erstellen Sie das Unterverzeichnis RemoveBG` in Ihrem GIMP-Plugins-Ordner:
         - **Windows:** `C:\Users\YourUserName\AppData\Roaming\GIMP\3.0\plug-ins\RemoveBG\`
         - **Linux mit System-Paket:** `/home/YourUserName/.config/GIMP/3.0/plug-ins/RemoveBG/`
         - **Linux mit SNAP-Paket:** `/home/YourUserName/snap/gimp/current/.config/GIMP/3.0/plug-ins/RemoveBG/`
-    -   Verschieben Sie `RemoveBG.py` und `config.ini` in dieses Unterverzeichnis.
+    -   Laden Sie `RemoveBG.py` und `config.ini` herunter und verschieben Sie beide Dateien in dieses Unterverzeichnis.
     -   Bearbeiten Sie die Datei `config.ini` wenn Sie einen anderen Pfad als `~/rembg/bin/rembg` verwenden. Windows-Nutzer verwenden den Pfad `AppData\Local\rembg\rembg.exe` (relativer Pfad unter `C:\Users\[Benutzername]`), den das Setup-Programm vorgibt. Das Home-Verzeichnis wird vom Python-Script ergänzt.
+    
 4.  **Starten Sie GIMP neu**, um das Plugin zu laden.
 
 **Weitere Möglichkeiten:** Sie können rembg auch unabhängig von GIMP verwenden. Anleitungen finden Sie auf [rembg](https://github.com/danielgatis/rembg).
