@@ -29,6 +29,8 @@ deactivate
 
 **Installation unter Windows:** Verwenden Sie das Setup-Programm [rembg-cli-cpu-installer.exe](https://github.com/Myria-de/gimp-rembg-plugin/releases/download/v1.0/rembg-cli-cpu-installer.exe) unter "Releases".
 
+**Alternative:** Laden Sie [rembg-linux-bin.tar.gz](https://github.com/Myria-de/gimp-rembg-plugin/releases/download/v1.0/rembg-linux-bin.tar.gz) herunter. In der Datei sind rembg und alle nötigene Python-Dateien enthalten (nur CPU).
+
 2a. **Kopieren Sie das Plugin aus dem ZIP-Archiv in die Gimp-Konfiguration**:
 
 - Über das ZIP-Archiv installieren:
